@@ -28,10 +28,15 @@ along with Bistec.  If not, see <http://www.gnu.org/licenses/>.
 #import <Cocoa/Cocoa.h>
 #import <QTKit/QTKit.h>
 
+#define	OPEN	1
+#define	QUIT	2
+
 
 @interface AppController : NSObject {
 	QTMovie * theMovie;
 	NSTimer * TCUpdateTimer;
+	
+	short action;
 	
 	BOOL saved;
 	NSString * path;
@@ -40,6 +45,7 @@ along with Bistec.  If not, see <http://www.gnu.org/licenses/>.
 	NSMutableArray * TCInList;
 	NSMutableArray * TCOutList;
 	
+	IBOutlet NSPanel * unsavedPanel;
 	IBOutlet QTMovieView * movieCanvas;
 	IBOutlet NSTextField * TCLabel;
 	IBOutlet NSTextView * captionView;

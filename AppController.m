@@ -42,6 +42,7 @@
 	[TCInList retain];
 	[TCOutList retain];
 	saved = YES;
+	action = 0;
 }
 
 -(IBAction) loadMovie:(id)sender
@@ -212,7 +213,21 @@
 		{
 			[self saveSrtTo:[savePath cStringUsingEncoding:NSUTF8StringEncoding]];
 			if(!saved)
-			{} // HANDLE FILE SAVING ERROR HERE
+			{
+				NSLog(@"Error occurred while saving!");
+				exit;
+			} // HANDLE FILE SAVING ERROR HERE
+			
+			switch (action) {
+				case OPEN:
+					[self openSRT:self];
+					break;
+				case QUIT:
+					[[NSApplication sharedApplication] terminate:self];
+					break;
+				default:
+					break;
+			}
 		}
 	}
 }
@@ -244,6 +259,13 @@
 
 - (IBAction)openSRT:(id)sender
 {
+	if(!saved)
+	{
+		action = OPEN;
+		[unsavedPanel makeKeyAndOrderFront:self];
+		exit;
+	}
+	
 	NSOpenPanel * panel = [NSOpenPanel openPanel];
 	[panel runModal];
 	int endOfFile=0, milliseconds=0, seconds=0, minutes=0, hours=0;

@@ -303,12 +303,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>main.m</string>
+								<string>AppController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -316,20 +318,20 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>main.m</string>
+										<string>AppController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>4E3FDF930EB5F677009D839E</string>
+										<string>4E35FDD90EBA2C7B0051CB07</string>
 										<key>history</key>
 										<array>
 											<string>4E3CC6D90E9D238600C584E3</string>
 											<string>4E3CC6DB0E9D238600C584E3</string>
 											<string>4E3CC6F40E9D239500C584E3</string>
-											<string>4EAC22F60EACA3D300FCEEC8</string>
-											<string>4E3FDF6F0EB5F340009D839E</string>
 											<string>4E3FDF700EB5F340009D839E</string>
-											<string>4E3FDF740EB5F340009D839E</string>
+											<string>4E35FDD00EBA2C7B0051CB07</string>
+											<string>4E35FDD10EBA2C7B0051CB07</string>
+											<string>4E35FDCC0EBA2C760051CB07</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -339,6 +341,13 @@
 											<string>4E3CC6E30E9D238600C584E3</string>
 											<string>4E3CC6E80E9D238600C584E3</string>
 											<string>4E3FDF730EB5F340009D839E</string>
+											<string>4E35FDD20EBA2C7B0051CB07</string>
+											<string>4E35FDD30EBA2C7B0051CB07</string>
+											<string>4E35FDD40EBA2C7B0051CB07</string>
+											<string>4E35FDD50EBA2C7B0051CB07</string>
+											<string>4E35FDD60EBA2C7B0051CB07</string>
+											<string>4E35FDD70EBA2C7B0051CB07</string>
+											<string>4E35FDD80EBA2C7B0051CB07</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -360,8 +369,6 @@
 							<string>561pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -398,9 +405,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>4E3FDF890EB5F66C009D839E</string>
+				<string>4E35FDDA0EBA2C7B0051CB07</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>4E3FDF8A0EB5F66C009D839E</string>
+				<string>4E35FDDB0EBA2C7B0051CB07</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -534,8 +541,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>4E3CC6A80E9D1EF400C584E3</string>
 		<string>/Users/joan/Documents/XCode/Bistec/Bistec.xcodeproj</string>
 	</array>
@@ -556,12 +561,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>AppController.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -617,7 +624,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>4E3CC6A80E9D1EF400C584E3</string>
-				<string>4E3FDF8B0EB5F66C009D839E</string>
+				<string>4E35FDCE0EBA2C760051CB07</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
