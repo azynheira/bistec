@@ -48,14 +48,13 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 256416208;
-			PBXWorkspaceStateSaveDate = 256416208;
+			PBXPerProjectTemplateStateSaveDate = 256416633;
+			PBXWorkspaceStateSaveDate = 256416633;
 		};
 		perUserProjectItems = {
 			4E35FDD00EBA2C7B0051CB07 = 4E35FDD00EBA2C7B0051CB07 /* PBXTextBookmark */;
 			4E35FDD10EBA2C7B0051CB07 = 4E35FDD10EBA2C7B0051CB07 /* PBXTextBookmark */;
 			4E35FDD20EBA2C7B0051CB07 = 4E35FDD20EBA2C7B0051CB07 /* PBXTextBookmark */;
-			4E35FDDC0EBA335B0051CB07 = 4E35FDDC0EBA335B0051CB07 /* PBXTextBookmark */;
 			4E3CC6BB0E9D205000C584E3 = 4E3CC6BB0E9D205000C584E3 /* PBXTextBookmark */;
 			4E3CC6BC0E9D205000C584E3 = 4E3CC6BC0E9D205000C584E3 /* PBXTextBookmark */;
 			4E3CC6D90E9D238600C584E3 = 4E3CC6D90E9D238600C584E3 /* PBXTextBookmark */;
@@ -66,9 +65,8 @@
 			4E3CC6F40E9D239500C584E3 = 4E3CC6F40E9D239500C584E3 /* PBXTextBookmark */;
 			4E3FDF700EB5F340009D839E = 4E3FDF700EB5F340009D839E /* PBXTextBookmark */;
 			4E3FDF730EB5F340009D839E = 4E3FDF730EB5F340009D839E /* PBXTextBookmark */;
-			4E442AFB0F489A6C00E59E14 /* PBXTextBookmark */ = 4E442AFB0F489A6C00E59E14 /* PBXTextBookmark */;
-			4E442AFC0F489A6C00E59E14 /* PBXTextBookmark */ = 4E442AFC0F489A6C00E59E14 /* PBXTextBookmark */;
-			4EC74B310EC397FC0064F9F0 = 4EC74B310EC397FC0064F9F0 /* PBXTextBookmark */;
+			4E442AFB0F489A6C00E59E14 = 4E442AFB0F489A6C00E59E14 /* PBXTextBookmark */;
+			4E442B070F489ADC00E59E14 = 4E442B070F489ADC00E59E14 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 4E3CC6970E9D15B300C584E3 /* Source Control */;
 		userBuildSettings = {
@@ -119,16 +117,6 @@
 		rType = 0;
 		vrLen = 1048;
 		vrLoc = 0;
-	};
-	4E35FDDC0EBA335B0051CB07 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 4E3CC69B0E9D1E8000C584E3 /* AppController.m */;
-		name = "AppController.m: 222";
-		rLen = 0;
-		rLoc = 6829;
-		rType = 0;
-		vrLen = 1057;
-		vrLoc = 6579;
 	};
 	4E3CC6880E9D15A400C584E3 /* Bistec */ = {
 		isa = PBXExecutable;
@@ -332,30 +320,20 @@
 		fRef = 4E3CC69B0E9D1E8000C584E3 /* AppController.m */;
 		name = "AppController.m: 222";
 		rLen = 0;
-		rLoc = 6829;
+		rLoc = 6825;
 		rType = 0;
 		vrLen = 1300;
 		vrLoc = 0;
 	};
-	4E442AFC0F489A6C00E59E14 /* PBXTextBookmark */ = {
+	4E442B070F489ADC00E59E14 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 4E3CC69B0E9D1E8000C584E3 /* AppController.m */;
 		name = "AppController.m: 164";
 		rLen = 0;
-		rLoc = 5034;
+		rLoc = 5030;
 		rType = 0;
 		vrLen = 1606;
 		vrLoc = 4310;
-	};
-	4EC74B310EC397FC0064F9F0 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 4E3CC69B0E9D1E8000C584E3 /* AppController.m */;
-		name = "AppController.m: 222";
-		rLen = 0;
-		rLoc = 6829;
-		rType = 0;
-		vrLen = 1111;
-		vrLoc = 612;
 	};
 	8D1107260486CEB800E47090 /* Bistec */ = {
 		activeExec = 0;
