@@ -160,8 +160,8 @@
 - (void)textDidChange:(NSNotification *)aNotification
 {
 	//printf("%u\n",[subtitleList selectedRow]);
-	[textList replaceObjectAtIndex:[subtitleList selectedRow] withObject:[NSString stringWithString:[subtitleField string]]];
-	[subtitleList reloadData];
+	//[textList replaceObjectAtIndex:[subtitleList selectedRow] withObject:[NSString stringWithString:[subtitleField string]]];
+	//[subtitleList reloadData];
 	saved = NO;
 }
 

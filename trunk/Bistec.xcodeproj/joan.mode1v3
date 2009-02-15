@@ -322,7 +322,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>4E35FDD90EBA2C7B0051CB07</string>
+										<string>4E442AFC0F489A6C00E59E14</string>
 										<key>history</key>
 										<array>
 											<string>4E3CC6D90E9D238600C584E3</string>
@@ -331,7 +331,7 @@
 											<string>4E3FDF700EB5F340009D839E</string>
 											<string>4E35FDD00EBA2C7B0051CB07</string>
 											<string>4E35FDD10EBA2C7B0051CB07</string>
-											<string>4E35FDCC0EBA2C760051CB07</string>
+											<string>4E442AFB0F489A6C00E59E14</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -342,12 +342,6 @@
 											<string>4E3CC6E80E9D238600C584E3</string>
 											<string>4E3FDF730EB5F340009D839E</string>
 											<string>4E35FDD20EBA2C7B0051CB07</string>
-											<string>4E35FDD30EBA2C7B0051CB07</string>
-											<string>4E35FDD40EBA2C7B0051CB07</string>
-											<string>4E35FDD50EBA2C7B0051CB07</string>
-											<string>4E35FDD60EBA2C7B0051CB07</string>
-											<string>4E35FDD70EBA2C7B0051CB07</string>
-											<string>4E35FDD80EBA2C7B0051CB07</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -405,9 +399,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>4E35FDDA0EBA2C7B0051CB07</string>
+				<string>4E442AFD0F489A6C00E59E14</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>4E35FDDB0EBA2C7B0051CB07</string>
+				<string>4E442AFE0F489A6C00E59E14</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -541,6 +535,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C78EAAD065D492600B07095</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>4E3CC6A80E9D1EF400C584E3</string>
 		<string>/Users/joan/Documents/XCode/Bistec/Bistec.xcodeproj</string>
 	</array>
@@ -561,14 +557,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>AppController.m</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -624,7 +618,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>4E3CC6A80E9D1EF400C584E3</string>
-				<string>4E35FDCE0EBA2C760051CB07</string>
+				<string>4E442AFF0F489A6C00E59E14</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -709,13 +703,11 @@
 									<key>DebugVariablesTableConfiguration</key>
 									<array>
 										<string>Name</string>
-										<real>137</real>
-										<string>Type</string>
-										<real>84</real>
+										<real>166</real>
 										<string>Value</string>
-										<real>85</real>
+										<real>114</real>
 										<string>Summary</string>
-										<real>115</real>
+										<real>144</real>
 									</array>
 									<key>Frame</key>
 									<string>{{376, 0}, {449, 282}}</string>
@@ -746,13 +738,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>4E3FDF8C0EB5F66C009D839E</string>
+				<string>4E442B000F489A6C00E59E14</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>4E3FDF8D0EB5F66C009D839E</string>
-				<string>4E3FDF8E0EB5F66C009D839E</string>
-				<string>4E3FDF8F0EB5F66C009D839E</string>
-				<string>4E3FDF900EB5F66C009D839E</string>
-				<string>4E3FDF910EB5F66C009D839E</string>
+				<string>4E442B010F489A6C00E59E14</string>
+				<string>4E442B020F489A6C00E59E14</string>
+				<string>4E442B030F489A6C00E59E14</string>
+				<string>4E442B040F489A6C00E59E14</string>
+				<string>4E442B050F489A6C00E59E14</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -914,7 +906,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>4E3FDF920EB5F66C009D839E</string>
+				<string>4E442B060F489A6C00E59E14</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
