@@ -203,10 +203,11 @@
 		if(!path)
 		{
 			NSSavePanel * panel = [NSSavePanel savePanel];
-			[panel runModal];
 			
-			if([panel filename])
+			if([panel runModal] != NSFileHandlingPanelCancelButton)
 				savePath = [NSString stringWithString:[panel filename]];
+			else
+				return;
 		}
 		else
 			savePath = [NSString stringWithString:path];
@@ -245,7 +246,7 @@
 		NSString * sub = [NSString stringWithString:@""];
 		for(i=0;i<[textList count];i++)
 		{
-			sub = [NSString stringWithFormat:@"%u\n%s --> %s\n%s\n\n\n",i+1,[[self TCForMilliseconds:[[TCInList objectAtIndex:i] intValue]] cStringUsingEncoding:NSUTF8StringEncoding],[[self TCForMilliseconds:[[TCOutList objectAtIndex:i] intValue]] cStringUsingEncoding:NSUTF8StringEncoding],[[textList objectAtIndex:i] cStringUsingEncoding:NSUTF8StringEncoding]];
+			sub = [NSString stringWithFormat:@"%u\n%s --> %s\n%s\n\n",i+1,[[self TCForMilliseconds:[[TCInList objectAtIndex:i] intValue]] cStringUsingEncoding:NSUTF8StringEncoding],[[self TCForMilliseconds:[[TCOutList objectAtIndex:i] intValue]] cStringUsingEncoding:NSUTF8StringEncoding],[[textList objectAtIndex:i] cStringUsingEncoding:NSUTF8StringEncoding]];
 			fwrite([sub cStringUsingEncoding:NSUTF8StringEncoding], [sub length], 1, fp);
 		}
 		fclose(fp);
