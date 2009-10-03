@@ -53,6 +53,12 @@ along with Bistec.  If not, see <http://www.gnu.org/licenses/>.
 	IBOutlet NSTextField * TCOutLabel;
 	IBOutlet NSTextView * subtitleField;
 	IBOutlet NSTableView * subtitleList;
+	IBOutlet NSPanel * timecodeShiftingPanel;
+	IBOutlet NSTextField * allHoursField;
+	IBOutlet NSTextField * allMinutesField;
+	IBOutlet NSTextField * allSecondsField;
+	IBOutlet NSTextField * allMillisecondsField;
+	IBOutlet NSButton * allOk;
 }
 
 - (IBAction)loadMovie:(id)sender;
@@ -62,6 +68,7 @@ along with Bistec.  If not, see <http://www.gnu.org/licenses/>.
 - (IBAction)removeSubtitle:(id)sender;
 - (IBAction)saveFile:(id)sender;
 - (IBAction)openSRT:(id)sender;
+- (IBAction)doTimecodeShifting:(id)sender;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification;
 - (void)updateTC:(id)sender;
