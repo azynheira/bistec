@@ -48,11 +48,20 @@
 -(IBAction) loadMovie:(id)sender
 {
 	NSOpenPanel * thePanel = [NSOpenPanel openPanel];
+	NSError * error = [[NSError alloc] init];
 	[thePanel runModal];
 	if([thePanel filename])
 	{
-		theMovie = [QTMovie movieWithFile:[thePanel filename] error:nil];
-		[movieCanvas setMovie:theMovie];
+		if([QTMovie canInitWithFile:[thePanel filename]]) {
+			theMovie = [QTMovie movieWithFile:[thePanel filename] error:&error];
+			if(theMovie) {
+				[movieCanvas setMovie:theMovie];
+			} else {
+				[[NSAlert alertWithError:error] runModal];
+			}
+		} else {
+			[[NSAlert alertWithMessageText:@"The selected file is not a valid movie file." defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@""] runModal];
+		}
 	}
 }
 
@@ -203,7 +212,7 @@
 		if(!path)
 		{
 			NSSavePanel * panel = [NSSavePanel savePanel];
-			
+			[panel setRequiredFileType:@"srt"];
 			if([panel runModal] != NSFileHandlingPanelCancelButton)
 				savePath = [NSString stringWithString:[panel filename]];
 			else
@@ -270,6 +279,7 @@
 	}
 	
 	NSOpenPanel * panel = [NSOpenPanel openPanel];
+	[panel setRequiredFileType:@"srt"];
 	[panel runModal];
 	int endOfFile=0, milliseconds=0, seconds=0, minutes=0, hours=0;
 	char * buffer = (char *)malloc(sizeof(char)*3);
@@ -283,16 +293,18 @@
 		FILE * fp = fopen([[panel filename] cStringUsingEncoding:NSUTF8StringEncoding],"r");
 		if(fp)
 		{
+			saved = YES;
+			path = [NSString stringWithString:[[panel filenames] objectAtIndex:0]];
+			NSLog(path);
 			NSString * text = [NSString stringWithString:@""];
 			char a[1]="0",b[1]="0",*tcin=(char *)malloc(sizeof(char)*13),*tcout=(char *)malloc(sizeof(char)*13);
-			NSString * smilliseconds = [NSString stringWithString:@""], * sseconds = [NSString stringWithString:@""], * sminutes = [NSString stringWithString:@""], * shours = [NSString stringWithString:@""];
 			fseek(fp,0,SEEK_END);
 			endOfFile = ftell(fp);
 			rewind(fp);
 			while(ftell(fp)<endOfFile)
 			{
 				free(tcin);
-				free(tcout); // And stay DOWN!
+				free(tcout);
 				tcin=(char *)malloc(sizeof(char)*13);
 				tcout=(char *)malloc(sizeof(char)*13);
 				while(b[0]!='\n')
@@ -300,7 +312,9 @@
 				fread(tcin,12,1,fp);
 				fseek(fp,5,SEEK_CUR);
 				fread(tcout,12,1,fp);
-				fseek(fp,1,SEEK_CUR);
+				while(b[0]=='\n')
+					fread(b, 1, 1, fp);
+				fseek(fp, -1, SEEK_CUR);
 				text = @"";
 				while(1)
 				{
@@ -310,10 +324,8 @@
 					text = [text stringByAppendingString:[NSString stringWithFormat:@"%c",b[0]]];
 					a[0]=b[0];
 				}
+				text = [text substringToIndex:[text length]-1];
 				fseek(fp,3,SEEK_CUR);
-				
-				//printf("Got TCs: %s | %s\n",tcin,tcout);
-				//NSLog(text);
 				
 				// Get TCs from tcin and tcout (char *)
 				
@@ -337,31 +349,9 @@
 				buffer[2] = tcin[11];
 				milliseconds = atoi(buffer);
 				
-				if(hours<10)
-					shours = [NSString stringWithFormat:@"0%u",hours];
-				else
-					shours = [NSString stringWithFormat:@"%u",hours];
-				
-				if(minutes<10)
-					sminutes = [NSString stringWithFormat:@"0%u",minutes];
-				else
-					sminutes = [NSString stringWithFormat:@"%u",minutes];
-				
-				if(seconds<10)
-					sseconds = [NSString stringWithFormat:@"0%u",seconds];
-				else
-					sseconds = [NSString stringWithFormat:@"%u",seconds];
-				
-				smilliseconds = [NSString stringWithFormat:@"%u",milliseconds];
-				
-				if(milliseconds<100)
-					smilliseconds = [NSString stringWithFormat:@"0%u",milliseconds];
-				if(milliseconds<10)
-					smilliseconds = [NSString stringWithFormat:@"00%u",milliseconds];
-				
-				//NSLog(smilliseconds);
-				
-				[TCInList addObject:[NSString stringWithFormat:@"%@:%@:%@,%@",shours,sminutes,sseconds,smilliseconds]];
+				milliseconds = milliseconds + seconds*1000 + minutes*60000 + hours*3600000;
+								
+				[TCInList addObject:[NSNumber numberWithInt:milliseconds]];
 				
 				buffer[0] = tcout[0];
 				buffer[1] = tcout[1];
@@ -383,32 +373,9 @@
 				buffer[2] = tcout[11];
 				milliseconds = atoi(buffer);
 				
-				if(hours<10)
-					shours = [NSString stringWithFormat:@"0%u",hours];
-				else
-					shours = [NSString stringWithFormat:@"%u",hours];
+				milliseconds = milliseconds + seconds*1000 + minutes*60000 + hours*3600000;
 				
-				if(minutes<10)
-					sminutes = [NSString stringWithFormat:@"0%u",minutes];
-				else
-					sminutes = [NSString stringWithFormat:@"%u",minutes];
-				
-				if(seconds<10)
-					sseconds = [NSString stringWithFormat:@"0%u",seconds];
-				else
-					sseconds = [NSString stringWithFormat:@"%u",seconds];
-				
-				smilliseconds = [NSString stringWithFormat:@"%u",milliseconds];
-				
-				if(milliseconds<100)
-					smilliseconds = [NSString stringWithFormat:@"0%u",milliseconds];
-				if(milliseconds<10)
-					smilliseconds = [NSString stringWithFormat:@"00%u",milliseconds];
-				
-				//NSLog(smilliseconds);
-				
-				[TCOutList addObject:[NSString stringWithFormat:@"%@:%@:%@,%@",shours,sminutes,sseconds,smilliseconds]];
-				
+				[TCOutList addObject:[NSNumber numberWithInt:milliseconds]];
 				
 				// Get subtitle caption from text (NSString *)
 				
@@ -419,6 +386,23 @@
 		}else
 			perror("Could not open");
 	}
+}
+
+- (IBAction)doTimecodeShifting:(id)sender
+{
+	/*int hours = [[allHoursField stringValue] intValue];
+	int minutes = [[allMinutesField stringValue] intValue];
+	int seconds = [[allSecondsField stringValue] intValue];
+	int milliseconds = [[allMillisecondsField stringValue] intValue];
+	
+	int th, tm, ts, tmm;
+	
+	int i = 0;
+	for(i=0;i<[TCInList count];i++)
+	{
+		// Extract the values
+		th = [TCInList objectAtIndex:i];
+	}*/
 }
 
 @end
