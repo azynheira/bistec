@@ -42,7 +42,24 @@
 	[TCInList retain];
 	[TCOutList retain];
 	saved = YES;
+	path = malloc(255);
+	path[0] = '\0';
 	action = 0;
+}
+
+- (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {
+	if(saved) {
+		return YES;
+	}
+	int r = [[NSAlert alertWithMessageText:@"There are unsaved changes" defaultButton:@"Save" alternateButton:@"Don't save" otherButton:@"Cancel" informativeTextWithFormat:@"Do you want to save them before continuing?"] runModal];
+	if(r == NSAlertDefaultReturn) {
+		[self saveFile:self andQuit:TRUE];
+		return NO;
+	}
+	if(r == NSAlertOtherReturn) {
+		return NO;
+	}
+	return YES;
 }
 
 -(IBAction) loadMovie:(id)sender
@@ -203,13 +220,17 @@
 	saved = NO;
 }
 
-- (IBAction)saveFile:(id)sender
+- (IBAction)actionSaveFile:(id)sender {
+	[self saveFile:sender andQuit:NO];
+}
+
+- (void)saveFile:(id)sender andQuit:(BOOL)quit
 {
 	NSString * savePath;
 	
 	if(!saved)
 	{
-		if(!path)
+		if(path[0] == '\0')
 		{
 			NSSavePanel * panel = [NSSavePanel savePanel];
 			[panel setRequiredFileType:@"srt"];
@@ -219,34 +240,28 @@
 				return;
 		}
 		else
-			savePath = [NSString stringWithString:path];
+			savePath = [NSString stringWithCString:path encoding:NSUTF8StringEncoding];
 		
 		if(savePath)
 		{
-			[self saveSrtTo:[savePath cStringUsingEncoding:NSUTF8StringEncoding]];
+			[self saveSrtTo:savePath];
 			if(!saved)
 			{
 				NSLog(@"Error occurred while saving!");
 				exit;
 			} // HANDLE FILE SAVING ERROR HERE
 			
-			switch (action) {
-				case OPEN:
-					[self openSRT:self];
-					break;
-				case QUIT:
-					[[NSApplication sharedApplication] terminate:self];
-					break;
-				default:
-					break;
+			path = [savePath cStringUsingEncoding:NSUTF8StringEncoding];
+			if(quit) {
+				[[NSApplication sharedApplication] terminate:self];
 			}
 		}
 	}
 }
 
-- (void)saveSrtTo:(char*)aPath
+- (void)saveSrtTo:(NSString*)aPath
 {
-	FILE * fp = fopen(aPath, "w");
+	FILE * fp = fopen([aPath cStringUsingEncoding:NSUTF8StringEncoding], "w");
 	//printf("Saving to %s\n",aPath);
 	
 	if(fp)
@@ -273,9 +288,14 @@
 {
 	if(!saved)
 	{
-		action = OPEN;
-		[unsavedPanel makeKeyAndOrderFront:self];
-		exit;
+		int r = [[NSAlert alertWithMessageText:@"There are unsaved changes" defaultButton:@"Save" alternateButton:@"Don't save" otherButton:@"Cancel" informativeTextWithFormat:@"Do you want to save them before continuing?"] runModal];
+		if(r == NSAlertDefaultReturn) {
+			[self saveFile:self andQuit:NO];
+		}
+		if(r == NSAlertOtherReturn) {
+			return;
+		}
+		
 	}
 	
 	NSOpenPanel * panel = [NSOpenPanel openPanel];
@@ -293,9 +313,8 @@
 		FILE * fp = fopen([[panel filename] cStringUsingEncoding:NSUTF8StringEncoding],"r");
 		if(fp)
 		{
+			path = [[panel filename] cStringUsingEncoding:NSUTF8StringEncoding];
 			saved = YES;
-			path = [NSString stringWithString:[[panel filenames] objectAtIndex:0]];
-			NSLog(path);
 			NSString * text = [NSString stringWithString:@""];
 			char a[1]="0",b[1]="0",*tcin=(char *)malloc(sizeof(char)*13),*tcout=(char *)malloc(sizeof(char)*13);
 			fseek(fp,0,SEEK_END);

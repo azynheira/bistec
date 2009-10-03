@@ -31,6 +31,7 @@ along with Bistec.  If not, see <http://www.gnu.org/licenses/>.
 #define	OPEN	1
 #define	QUIT	2
 
+char * path;
 
 @interface AppController : NSObject {
 	QTMovie * theMovie;
@@ -39,7 +40,6 @@ along with Bistec.  If not, see <http://www.gnu.org/licenses/>.
 	short action;
 	
 	BOOL saved;
-	NSString * path;
 	
 	NSMutableArray * textList;
 	NSMutableArray * TCInList;
@@ -66,19 +66,22 @@ along with Bistec.  If not, see <http://www.gnu.org/licenses/>.
 - (IBAction)setTCIn:(id)sender;
 - (IBAction)setTCOut:(id)sender;
 - (IBAction)removeSubtitle:(id)sender;
-- (IBAction)saveFile:(id)sender;
+- (IBAction)actionSaveFile:(id)sender;
+- (void)saveFile:(id)sender andQuit:(BOOL)quit;
 - (IBAction)openSRT:(id)sender;
 - (IBAction)doTimecodeShifting:(id)sender;
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification;
 - (void)updateTC:(id)sender;
 - (NSString *)TCForMilliseconds:(NSInteger)milliseconds;
-- (void)saveSrtTo:(char*)aPath;
+- (void)saveSrtTo:(NSString*)aPath;
 
 // delegate methods
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
 - (BOOL)tableView:(NSTableView *)aTableView shouldSelectRow:(NSInteger)rowIndex;
 - (void)textDidChange:(NSNotification *)aNotification;
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification;
+- (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender;
 
 @end
